@@ -8217,6 +8217,8 @@ fi
 
 
 
+# ACX_BUGURL([https://gcc.gnu.org/bugs/])
+# '\#' needed to escape hash to Make
 
 
 # Check whether --with-bugurl was given.
@@ -8229,7 +8231,7 @@ if test "${with_bugurl+set}" = set; then :
 	   ;;
      esac
 else
-  BUGURL="https://gcc.gnu.org/bugs/"
+  BUGURL="https://gcc.gnu.org/wiki/cxx-coroutines\#Bugs"
 
 fi
 

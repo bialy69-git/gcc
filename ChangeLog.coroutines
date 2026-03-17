@@ -1,0 +1,3017 @@
+2020-01-16  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro.h: Use <cstdlib> instead of a local
+	declaration for abort ().
+
+2020-01-14  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_co_await): Check that a handle type
+	returned by await_suspend is an instance of the coroutines
+	handle template.
+
+2020-01-14  Iain Sandoe  <iain@sandoe.co.uk>
+
+	libiberty/
+	* testsuite/demangle-expected: Add testcase for the co_await
+	operator mangling.
+
+2020-01-13  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Use new and delete to
+	manage the suspend_points map.
+
+2020-01-13  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (find_coro_traits_template_class): Delete forward
+	referenced.
+	(find_coro_handle_type): Likewise.
+	(coro_traits_templ, coro_handle_templ): New.
+	(find_coro_traits_template_decl): New.
+	(instantiate_coro_traits): Revised from
+	find_coro_traits_template_class.
+	(find_coro_handle_template_decl): New.
+	(instantiate_coro_handle_for_promise_type): Revised from
+	find_coro_handle_type.
+	(coro_promise_type_found_p): Look up the required coroutine
+	traits and handle templates, fail if they are not found.
+
+2020-01-13  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* call.c (build_new_function_call): Remove extraneous test.
+
+2020-01-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (finish_co_return_stmt): We should mark the
+	trees as TREE_NO_WARNING unconditionally (the actual check has
+	to be done separately).
+
+2020-01-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (get_or_insert_coroutine_info): Use a cleared
+	allocator.
+
+2020-01-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc: Adjust struct use to C++ style.
+
+2020-01-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc: Mark static trees with GTY.
+
+2020-01-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* constexpr.c (potential_constant_expression_1): Update comment.
+	* coroutines.cc: Update comments and use of extended format print
+	options.
+	* decl.c (emit_coro_helper): Add a comment.
+
+2020-01-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (captures_temporary): Restore checks for and
+	skipping of, this pointers in ctors and dtors.
+
+2020-01-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	libstdc++-v3/
+	* include/std/coroutine: Adjust whitespace.  Add a definition
+	for the spaceship operator on coroutine handles.
+
+2020-01-09  Iain Sandoe  <iain@sandoe.co.uk>
+
+	libstdc++-v3/
+	* include/std/coroutine: Correct pathname in the edit header.
+
+2020-01-09  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* function.h: Fix trailing whitespace.
+
+2020-01-09  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (coro_validate_builtin_call): Remove the name
+	of the currently unused argument.
+
+2020-01-08  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_actor_fn): Handle use of overloaded
+	operator delete.
+	(morph_fn_to_coro): Handle use of overloaded operator new.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/gro_on_alloc_fail_0.C: Rename...
+	* g++.dg/coroutines/torture/alloc-00-gro-on-alloc-fail.C: ... to this.
+	* g++.dg/coroutines/torture/alloc-01-overload-newdel.C: New test.
+
+2020-01-06  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r279893.
+
+2020-01-02  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (find_std_experimental): Remove unneeded code.
+
+	libstdc++-v3/
+	* include/Makefile.am: Move coroutine header source from
+	experimental to std.
+	* include/Makefile.in: Regenerated.
+	* include/experimental/coroutine: Move from here..
+	* include/std/coroutine: ... to here.
+
+2020-01-01  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-builtins.def: Update copyright year.
+	* coroutine-passes.cc: Likewise.
+
+	gcc/cp/
+	* coroutines.cc: Likewise.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coroutines.exp: Likewise.
+
+	libstdc++-v3/
+	* include/experimental/coroutine: Likewise.
+
+2019-12-31  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/co-await-syntax-01-outside-fn.C: Use coro
+	namespace;
+	* g++.dg/coroutines/co-await-syntax-02-outside-fn.C: Likewise.
+	* g++.dg/coroutines/co-await-syntax-04-ctor-dtor.C: Likewise.
+	* g++.dg/coroutines/co-await-syntax-05-constexpr.C: Likewise.
+	* g++.dg/coroutines/co-await-syntax-06-main.C: Likewise.
+	* g++.dg/coroutines/co-await-syntax-07-varargs.C: Likewise.
+	* g++.dg/coroutines/coro.h: Check for the coroutines header in
+	the top level before trying the experimental case.
+
+2019-12-30  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r279761.
+
+2019-12-29  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* call.c (build_new_function_call): Validate coroutine builtins
+	arguments.
+	* coroutines.cc (coro_validate_builtin_call): New.
+	* cp-tree.h (coro_validate_builtin_call): New.
+
+2019-12-29  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* builtin-types.def (BT_CONST_SIZE): New.
+	(BT_FN_PTR_PTR_SIZE_BOOL): Update this...
+	(BT_FN_PTR_PTR_CONST_SIZE_BOOL): ... to this.
+	* coroutine-builtins.def (BUILT_IN_CORO_PROMISE): Use revised
+	builtin signature.
+
+2019-12-27  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.cc (execute_early_expand_coro_ifns):
+	Remove unneeded control flow and reindent.
+
+2019-12-27  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.cc (lower_coro_builtin): Re-indent.
+	(make_pass_coroutine_lower_builtins): Spelling corrections.
+
+2019-12-24  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (captures_temporary): Remove unused var.
+
+2019-12-24  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.cc (execute_early_expand_coro_ifns): Use
+	a worklist to contain and process the IFN_CO_ACTORs.
+
+2019-12-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-ret-03-different GRO-type.C:
+	Rename to...
+	* g++.dg/coroutines/torture/co-ret-03-different-GRO-type.C:
+	... this.
+
+2019-12-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r279715.
+
+2019-12-22  Iain Sandoe  <iain@sandoe.co.uk>
+
+	* g++.dg/coroutines/torture/func-params-0.C: Rename to...
+	* g++.dg/coroutines/torture/func-params-00.C: ... this.
+	* g++.dg/coroutines/torture/func-params-1.C: Rename to...
+	* g++.dg/coroutines/torture/func-params-01.C: ... this.
+	* g++.dg/coroutines/torture/func-params-2.C: Rename to...
+	* g++.dg/coroutines/torture/func-params-02.C: ... this.
+	* g++.dg/coroutines/torture/func-params-3.C: Rename to...
+	* g++.dg/coroutines/torture/func-params-03.C: ... this.
+	* g++.dg/coroutines/torture/func-params-4.C: Rename to...
+	* g++.dg/coroutines/torture/func-params-04.C: ... this.
+	* g++.dg/coroutines/torture/func-params-5.C: Rename to...
+	* g++.dg/coroutines/torture/func-params-05.C: ... this.
+	* g++.dg/coroutines/torture/func-params-6.C: Rename to...
+	* g++.dg/coroutines/torture/func-params-06.C: ... this.
+
+2019-12-22  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-yield-0-triv.C: Rename to...
+	* g++.dg/coroutines/torture/co-yield-00-triv.C: ... this.
+	* g++.dg/coroutines/torture/co-yield-1-multi.C: Rename to...
+	* g++.dg/coroutines/torture/co-yield-01-multi.C: ... this.
+	* g++.dg/coroutines/torture/co-yield-2-loop.C: Rename to...
+	* g++.dg/coroutines/torture/co-yield-02-loop.C: ... this.
+	* g++.dg/coroutines/torture/co-yield-3-tmpl.C: Rename to...
+	* g++.dg/coroutines/torture/co-yield-03-tmpl.C: ... this.
+	* g++.dg/coroutines/torture/co-yield-strings.C: Rename to...
+	* g++.dg/coroutines/torture/co-yield-04-complex-local-state.C:
+	... this..
+
+2019-12-21  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-ret-void-is-ready.C: Rename to...
+	* g++.dg/coroutines/torture/co-ret-00-void-return-is-ready.C:
+	... this.
+	* g++.dg/coroutines/torture/co-ret-void-is-suspend.C: Rename to...
+	* g++.dg/coroutines/torture/co-ret-01-void-return-is-suspend.C:
+	... this.
+	* g++.dg/coroutines/torture/co-ret-3.C: Rename to...
+	* g++.dg/coroutines/torture/co-ret-03-different: ... this.
+	* g++.dg/coroutines/torture/co-ret-4.C: Rename to...
+	* g++.dg/coroutines/torture/co-ret-04-GRO-nontriv.C: ... this.
+	* g++.dg/coroutines/torture/co-ret-5.C: Rename to...
+	* g++.dg/coroutines/torture/co-ret-05-return-value.C: ... this.
+	* g++.dg/coroutines/torture/co-ret-6.C: Rename to...
+	* g++.dg/coroutines/torture/co-ret-06-template-promise-val-1.C:
+	... this.
+	* g++.dg/coroutines/torture/co-ret-7.C: Rename to...
+	* g++.dg/coroutines/torture/co-ret-07-void-cast-expr.C: ... this.
+	* g++.dg/coroutines/torture/co-ret-8.C: Rename to...
+	* g++.dg/coroutines/torture/co-ret-08-template-cast-ret.C: ... this.
+	* g++.dg/coroutines/torture/co-ret-9.C: Rename to...
+	* g++.dg/coroutines/torture/co-ret-09-bool-await-susp.C: ... this.
+	* g++.dg/coroutines/torture/co-ret-10.C: Rename to...
+	* g++.dg/coroutines/torture/co-ret-10-expression-evaluates-once.C:
+	... this
+	* g++.dg/coroutines/torture/co-ret-11.C: Rename to...
+	* g++.dg/coroutines/torture/co-ret-11-co-ret-co-await.C: ... this.
+	* g++.dg/coroutines/torture/co-ret-12.C: Rename to...
+	* g++.dg/coroutines/torture/co-ret-12-co-ret-fun-co-await.C:
+	... this.
+
+2019-12-21  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/	
+	* g++.dg/coroutines/torture/co-await-0-triv.C: Rename to...
+	* g++.dg/coroutines/torture/co-await-00-trivial.C: ... this.
+	* g++.dg/coroutines/torture/co-await-1-value.C: Rename to...
+	* g++.dg/coroutines/torture/co-await-01-with-value.C: ... this.
+	* g++.dg/coroutines/torture/co-await-2-xform.C: Rename to...
+	* g++.dg/coroutines/torture/co-await-02-xform.C: ... this..
+	* g++.dg/coroutines/torture/co-await-3-rhs-op.C: Rename to...
+	* g++.dg/coroutines/torture/co-await-03-rhs-op.C: ... this..
+	* g++.dg/coroutines/torture/co-await-4-control-flow.C: Rename to...
+	* g++.dg/coroutines/torture/co-await-04-control-flow.C: ... this.
+	* g++.dg/coroutines/torture/co-await-5-loop.C: Rename to...
+	* g++.dg/coroutines/torture/co-await-05-loop.C: ... this.
+	* g++.dg/coroutines/torture/co-await-6-ovl.C: Rename to...
+	* g++.dg/coroutines/torture/co-await-06-ovl.C: ... this.
+	* g++.dg/coroutines/torture/co-await-7-tmpl.C: Rename to...
+	* g++.dg/coroutines/torture/co-await-07-tmpl.C: ... this..
+	* g++.dg/coroutines/torture/co-await-8-cascade.C: Rename to...
+	* g++.dg/coroutines/torture/co-await-08-cascade.C: ... this.
+	* g++.dg/coroutines/torture/co-await-9-pair.C: Rename to...
+	* g++.dg/coroutines/torture/co-await-09-pair.C: ... this.
+
+2019-12-20  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Check for LAZY move ctors
+	and assigns.
+
+2019-12-20  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (captures_temporary): Consider CTORs and
+	DTORs.
+
+2019-12-19  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (captures_temporary): Account for capture of
+	co_await expression results by reference in call argument
+	lists.
+	(maybe_promote_captured_temps): Likewise.
+
+2019-12-18  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Delete allocated vec
+	if we are not going to use it.
+
+2019-12-17  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/ChangeLog:
+	* coroutines.cc (build_co_await): Set the co_await expression
+	type to that of the await_resume call.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro1-ret-int-yield-int.h: Add an awaitable
+	that returns a reference.
+	* g++.dg/coroutines/torture/call-03-temp-ref-co-aw.C: New test.
+	* g++.dg/coroutines/torture/co-await-12-operator-2.C: Make the
+	syntax more regular.
+	* g++.dg/coroutines/torture/co-await-13-return-ref.C: New test.
+	* g++.dg/coroutines/torture/co-yield-08-more-refs.C: New test.
+	* g++.dg/coroutines/torture/co-yield-09-more-templ-refs.C: New test.
+
+2019-12-16  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r279408.
+
+2019-12-15  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc: Check for blank lines before functions.
+	Check comment wrapping.
+	* decl.c (emit_coro_helper): Adjust a comment.
+
+2019-12-15  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (create_anon_label_with_ctx): Mark created
+	label as used.
+	(create_named_label_with_ctx): Likewise.
+
+2019-12-15  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/C
+	* g++.dg/coroutines/torture/func-params-6.C: New test.
+
+2019-12-14  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (register_local_var_uses): Adjust frame entry
+	name for lambda capture proxies.
+
+2019-12-14  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (struct __local_vars_frame_data): Add fields to
+	collect lambda captures.
+	(register_local_var_uses): Register lambda captures separately.
+	(morph_fn_to_coro): For each lambda capture, create a local proxy
+	and initialise the frame copy from this.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/class-04-lambda-1.C: Avoid dangling ref
+	to a parameter.
+	* g++.dg/coroutines/torture/class-05-lambda-capture-copy-local.C: New.
+	* g++.dg/coroutines/torture/class-06-lambda-capture-ref.C: New test.
+	* g++.dg/coroutines/torture/lambda-05-capture-copy-local.C: New test.
+	* g++.dg/coroutines/torture/lambda-06-multi-capture.C: New test.
+	* g++.dg/coroutines/torture/lambda-07-multi-yield.C: New test.
+	* g++.dg/coroutines/torture/lambda-08-co-ret-parm-ref.C: New test.
+
+2019-12-13  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+
+	PR c++/92933
+	* coroutines.cc (register_local_var_uses): Handle unnamed
+	compiler-generated local variables.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/pr92933.C: New test.
+
+2019-12-13  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/co-await-syntax-08-lambda-auto.C: Use
+	correct dg options for syntax check.
+	* g++.dg/coroutines/co-return-syntax-09-lambda-auto.C: Likewise.
+	* g++.dg/coroutines/co-yield-syntax-09-lambda-auto.C: Likewise.
+
+2019-12-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/class-04-lambda-1.C: New test.
+	* g++.dg/coroutines/torture/lambda-00-co-ret.C: New test.
+	* g++.dg/coroutines/torture/lambda-01-co-ret-parm.C: New test.
+	* g++.dg/coroutines/torture/lambda-02-co-yield-values.C: New test.
+	* g++.dg/coroutines/torture/lambda-03-auto-parm-1.C: New test.
+	* g++.dg/coroutines/torture/lambda-04-templ-parm.C: New test.
+
+2019-12-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (coro_function_valid_p): Return false if we
+	find inconsistent return information.
+	* decl.c (finish_function): If the morph fails, assume that
+	we have nothing interesting in the function body.
+
+2019-12-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/co-await-syntax-08-lambda-auto.C: New test.
+	* g++.dg/coroutines/co-return-syntax-09-lambda-auto.C: New test.
+	* g++.dg/coroutines/co-yield-syntax-09-lambda-auto.C: New test.
+
+2019-12-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/class-00-co-ret.C: New test.
+	* g++.dg/coroutines/torture/class-01-co-ret-parm.C: New test.
+	* g++.dg/coroutines/torture/class-02-templ-parm.C: New test.
+	* g++.dg/coroutines/torture/class-03-operator-templ-parm.C: New test.
+
+2019-12-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* constexpr.c (potential_constant_expression_1): Add
+	CO_RETURN_EXPR to the list of coroutine exclusions.
+
+2019-12-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro1-ret-int-yield-int.h: Use long
+	format for long data.
+
+2019-12-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/co-return-syntax-01-outside-fn.C: New test.
+	* g++.dg/coroutines/co-return-syntax-02-outside-fn.C: New test.
+	* g++.dg/coroutines/coro-auto-fn.C: Rename to...
+	* g++.dg/coroutines/co-return-syntax-03-auto.C: ... this.
+	* g++.dg/coroutines/coro-context-ctor-dtor.C: Rename to...
+	* g++.dg/coroutines/co-return-syntax-04-ctor-dtor.C: ... this.
+	* g++.dg/coroutines/coro-constexpr-fn.C: Rename to...
+	* g++.dg/coroutines/co-return-syntax-05-constexpr-fn.C: ... this.
+	* g++.dg/coroutines/coro-context-main.C: Rename to...
+	* g++.dg/coroutines/co-return-syntax-06-main.C: ... this.
+	* g++.dg/coroutines/coro-context-vararg.C: Rename to...
+	* g++.dg/coroutines/co-return-syntax-07-vararg.C: ... this.
+	* g++.dg/coroutines/coro-bad-return.C: Rename to...
+	* g++.dg/coroutines/co-return-syntax-08-bad-return.C: ... this..
+
+2019-12-09  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r279104.
+
+2019-12-08  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-await-12-operator-2.C: New test.
+	* g++.dg/coroutines/torture/co-await-6-ovl.C: Make the operator
+	result participate in the output.
+
+2019-12-08  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.cc (execute_early_expand_coro_ifns): Early
+	exit on first non-label.
+
+2019-12-08  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (find_coro_traits_template_class): Use pre-
+	built namespace.
+	(find_coro_handle_type): Likewise.
+	(coro_promise_type_found_p): Initialise namespace and void
+	coro handle trees.
+
+2019-12-08  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/ChangeLog:
+	* coroutines.cc (find_coro_traits_template_decl): Rename forward
+	declaration to...
+	(find_coro_traits_template_class): ... this.
+	(find_std_experimental): Quote std::experimental.
+
+2019-12-08  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro.h: Just formatting change.
+	* g++.dg/coroutines/coro1-ret-int-yield-int.h: Add return_void.
+	* g++.dg/coroutines/torture/co-await-7-tmpl.C: Add missing cast.
+	* g++.dg/coroutines/torture/co-ret-5.C: Use boiler-plate header.
+	* g++.dg/coroutines/torture/co-ret-7.C: Likewise.
+
+2019-12-07  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (finish_co_await_expr): Check the function args
+	for dependent types as well as the return.
+	(finish_co_yield_expr): Likewise.
+	(finish_co_return_stmt): Likewise.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-await-10-template-fn-arg.C: New test.
+	* g++.dg/coroutines/torture/co-await-11-forwarding.C: New test.
+	* g++.dg/coroutines/torture/co-ret-13-template-2.C: New test.
+	* g++.dg/coroutines/torture/co-ret-14-template-3.C: New test.
+	* g++.dg/coroutines/torture/co-yield-07-template-fn-param.C: New test.
+
+2019-12-07  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (find_std_experimental): Check for NULL
+	tree return.
+	(find_coro_traits_template_decl): Renamed to...
+	(find_coro_traits_template_class): ...this; revise to use a
+	TYPE_ARGUMENT_PACK for the second param to the traits lookup.
+	Pass the function in instead of assuming we should find it in
+	current_function_decl.
+	(find_coro_handle_type): Show errors or warnings.
+	(find_promise_type): Rename variables. Show errors and warnings.
+	(coro_promise_type_found_p): Revise comments and variable names.
+
+2019-12-07  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro1-ret-int-yield-int.h: Extract
+	awaitable, await_transform and promise CTOR from tests.
+	* g++.dg/coroutines/torture/co-await-8-cascade.C: Use
+	common header.
+	* g++.dg/coroutines/torture/func-params-0.C: Likewise.
+
+2019-12-06  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/ChangeLog:
+	* g++.dg/coroutines/co-yield-syntax-0.C: Rename to...
+	* g++.dg/coroutines/co-yield-syntax-00-needs-expr.C: ...this
+	* g++.dg/coroutines/co-yield-syntax-1.C: Rename to...
+	* g++.dg/coroutines/co-yield-syntax-01-outside-fn.C: ...this
+	* g++.dg/coroutines/co-yield-syntax-2.C: Rename to...
+	* g++.dg/coroutines/co-yield-syntax-02-outside-fn.C: ...this.
+	* g++.dg/coroutines/co-yield-syntax-03-auto.C: New test.
+	* g++.dg/coroutines/co-yield-syntax-04-ctor-dtor.C: New test.
+	* g++.dg/coroutines/co-yield-syntax-05-constexpr.C: New test.
+	* g++.dg/coroutines/co-yield-syntax-06-main.C: New test.
+	* g++.dg/coroutines/co-yield-syntax-07-varargs.C: New test.
+	* g++.dg/coroutines/co-yield-syntax-3.C: Rename to...
+	* g++.dg/coroutines/co-yield-syntax-08-needs-expr.C: ...this.
+
+2019-12-06  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/co-await-syntax-0.C: Rename to...
+	* g++.dg/coroutines/co-await-syntax-00-needs-expr.C: ... this.
+	* g++.dg/coroutines/co-await-syntax-01-outside-fn.C: New test.
+	* g++.dg/coroutines/co-await-syntax-02-outside-fn.C: New test.
+	* g++.dg/coroutines/coro-await-context-auto-fn.C: Rename to...
+	* g++.dg/coroutines/co-await-syntax-03-auto.C: ... this.
+	* g++.dg/coroutines/co-await-syntax-04-ctor-dtor.C: New test.
+	* g++.dg/coroutines/co-await-syntax-05-constexpr.C: New test.
+	* g++.dg/coroutines/co-await-syntax-06-main.C: New test.
+	* g++.dg/coroutines/co-await-syntax-07-varargs.C: New test.
+
+2019-12-06  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/co-yield-syntax-3.C: Tidy testcase.
+	* g++.dg/coroutines/torture/co-await-0-triv.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-1-value.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-2-xform.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-3-rhs-op.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-4-control-flow.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-5-loop.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-6-ovl.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-7-tmpl.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-8-cascade.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-9-pair.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-10.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-11.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-12.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-3.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-4.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-5.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-6.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-7.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-8.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-9.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-void-is-ready.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-void-is-suspend.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-0-triv.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-1-multi.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-2-loop.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-3-tmpl.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-strings.C: Likewise.
+	* g++.dg/coroutines/torture/exceptions-test-0.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-0.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-1.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-2.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-3.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-4.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-5.C: Likewise.
+	* g++.dg/coroutines/torture/gro_on_alloc_fail_0.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-0.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-1.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-2.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-3.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-4.C: Likewise.
+	* g++.dg/coroutines/torture/mid-suspend-destruction-0.C: Likewise.
+
+2019-12-05  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_await_expander): Handle CALL_EXPR.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro1-ret-int-yield-int.h: New helper include.
+	* g++.dg/coroutines/torture/call-00-co-aw-arg.C: New test.
+	* g++.dg/coroutines/torture/call-01-multiple-co-aw.C: New test.
+	* g++.dg/coroutines/torture/call-02-temp-co-aw.C: New test.
+	* g++.dg/coroutines/torture/co-ret-11.C: New test.
+	* g++.dg/coroutines/torture/co-ret-12.C: New test.
+	* g++.dg/coroutines/torture/co-yield-05-co-aw.C: New test.
+	* g++.dg/coroutines/torture/co-yield-06-fun-parm.C: New test.
+
+2019-12-05  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (create_named_label_with_ctx): Adjust
+	comment.  Don't mark our local labels as used.
+	(transform_await_expr): Update comments.
+	(build_actor_fn): Likewise.
+	(morph_fn_to_coro): Tidy asserts, and make them checking
+	variety.  Remove development code.
+
+2019-12-04  Iain Sandoe  <iain@sandoe.co.uk>
+
+	libiberty/
+	* cp-demangle.c (cplus_demangle_operators): Add the co_await
+	operator.
+
+2019-12-03  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.cc (gate): Check for coroutine components in
+	addition to the coroutine enable flag before executing the IFN
+	lowering pass.
+	* function.h (struct function): Allocate a bit to indicate that
+	the function is a coroutine component.
+
+	gcc/cp/
+	* decl.c (emit_coro_helper): Set coroutine component bit when
+	needed.
+	(finish_function): Likewise.
+
+2019-12-02  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r278894.
+
+2019-12-01  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.cc (lower_coro_builtin): Amend comments.
+	(execute_early_expand_coro_ifns): Expand CO_FRAME.
+	(execute_finalize_frame): Remove.
+	(class pass_coroutine_finalize_frame): Remove.
+	(make_pass_coroutine_finalize_frame): Remove.
+	* passes.def: Remove finalize frame pass.
+	* tree-pass.h (make_pass_coroutine_finalize_frame): Remove.
+
+2019-11-30  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (lookup_promise_member): Remove.
+	(coro_init_identifiers): New.
+	(coro_promise_type_found_p): Initialize the coroutines state
+	and identifiers lazily.
+	(lookup_promise_method): New.
+	(build_co_await): Use pre-built identifiers for coroutine,
+	promise and awaiter names.
+	(finish_co_await_expr): Likewise.
+	(finish_co_yield_expr): Likewise.
+	(finish_co_return_stmt): Likewise.
+	(co_await_expander): Likewise.
+	(build_actor_fn): Likewise.
+	(build_init_or_final_await): Likewise.
+	(morph_fn_to_coro): Likewise.
+	* cp-tree.h (enum cp_tree_index): Remove coroutine identifiers.
+	* decl.c (initialize_predefined_identifiers): Likewise.
+
+2019-11-29  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.cc (lower_coro_builtin): Use nodes and APIs
+	consistent with other places in the middle end.
+
+2019-11-29  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.cc (lower_coro_builtin): Use ptr_type_node
+	throughout instead of building nodes each time.
+
+2019-11-27  Iain Sandoe  <iain@sandoe.co.uk>
+
+	libstdc++-v3/
+	* include/experimental/coroutine: Update document group
+	information.
+
+2019-11-27  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/co-yield-syntax-3.C: Move common code to
+	coro.h.
+	* g++.dg/coroutines/coro-bad-return.C: Likewise.
+	* g++.dg/coroutines/coro-context-vararg.C: Likewise.
+	* g++.dg/coroutines/coro-missing-gro.C: Likewise.
+	* g++.dg/coroutines/coro-missing-promise-yield.C: Likewise.
+	* g++.dg/coroutines/coro-missing-ret-value.C: Likewise.
+	* g++.dg/coroutines/coro-missing-ret-void.C: Likewise.
+	* g++.dg/coroutines/coro-missing-ueh-1.C: Likewise.
+	* g++.dg/coroutines/coro-missing-ueh-2.C: Likewise.
+	* g++.dg/coroutines/coro-missing-ueh-3.C: Likewise.
+	* g++.dg/coroutines/coro-missing-ueh.h: Likewise.
+	* g++.dg/coroutines/torture/co-await-0-triv.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-1-value.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-2-xform.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-3-rhs-op.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-4-control-flow.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-5-loop.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-6-ovl.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-7-tmpl.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-8-cascade.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-9-pair.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-10.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-3.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-4.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-5.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-6.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-7.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-8.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-9.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-void-is-ready.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-void-is-suspend.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-0-triv.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-1-multi.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-2-loop.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-3-tmpl.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-strings.C: Likewise.
+	* g++.dg/coroutines/torture/exceptions-test-0.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-0.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-1.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-2.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-3.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-4.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-5.C: Likewise.
+	* g++.dg/coroutines/torture/gro_on_alloc_fail_0.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-0.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-1.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-2.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-3.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-4.C: Likewise.
+	* g++.dg/coroutines/torture/mid-suspend-destruction-0.C: Likewise.
+	* g++.dg/coroutines/coro.h: Collect common code here.
+
+2019-11-26  Iain Sandoe  <iain@sandoe.co.uk>
+
+	libstdc++-v3/
+	* include/experimental/coroutine: Use GNU convention for
+	naming.  Use implementation-reserved identifiers.
+
+2019-11-25  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r278677.
+
+2019-11-24  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (find_coro_traits_template_decl): Use global
+	identifier.
+	(find_coro_handle_type): Likewise.
+	(find_promise_type): Likewise.
+	* cp-tree.h (enum cp_tree_index): Add indices for the coroutine
+	global identifiers.
+	(coro_traits_identifier): New.
+	(coro_handle_identifier): New.
+	(coro_promise_type_identifier): New.
+	* decl.c (initialize_predefined_identifiers): Initialize global
+	identifiers for coroutines.
+
+2019-11-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc: Updated to en_US spellings.  Corrected more
+	punctuation in error messages.
+
+2019-11-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* config-lang.in (gtfiles): Add coroutines.cc.
+	* coroutines.cc (struct coroutine_info_hasher): New.
+	(coroutine_info_hasher::hash): New.
+	(coroutine_info_hasher::equal): New.
+	(get_or_insert_coroutine_info): New.
+	(get_coroutine_info): New.
+	(struct coroutine_info): Revise to use in a hash_table.
+	(coro_promise_type_found_p): Amend to use GTY coroutine_info.
+	(get_coroutine_promise_type): Likewise.
+	(get_coroutine_handle_type): Likewise.
+	(get_coroutine_self_handle_proxy): Likewise.
+	(get_coroutine_promise_proxy): Likewise.
+
+2019-11-20  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc(struct coroutine_info): Make C++ style, comment
+	fields.
+	(coro_promise_type_found_p): Adjust info type name.
+	(get_coroutine_promise_type): Likewise.
+	(get_coroutine_handle_type): Likewise.
+	(get_coroutine_self_handle_proxy): Likewise.
+	(get_coroutine_promise_proxy): Likewise.
+	(coro_common_keyword_context_valid_p): Adjust error message line
+	wrapping.
+	(coro_function_valid_p): Fix comment line wrap.
+	(enum suspend_point_kind): New.
+	(build_co_await): Use suspend_point_kind enum. Amend comments,
+	remove TYPE_CANONICAL() lookup.
+	(finish_co_await_expr): Remove extra checks on expression, use
+	Use suspend_point_kind enum.
+	(finish_co_yield_expr): Likewise.
+	(co_await_expander): Likewise.
+	(build_init_or_final_await): Likewise.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/co-await-syntax-0.C: New test.
+	* g++.dg/coroutines/co-yield-syntax-0.C: New test.
+
+2019-11-19  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/ChangeLog:
+	* cp-tree.def (CO_RETRN_EXPR): Rename this to ...
+	(CO_RETURN_EXPR): ... this.
+	* coroutines.cc (finish_co_return_stmt): Rename CO_RETRN_EXPR.
+	(coro_maybe_expand_co_return): Likewise.
+	* cp-objcp-common.c (cp_common_init_ts): Likewise.
+	* pt.c (tsubst_expr): Likewise.
+	* tree.c (cp_walk_subtrees): Likewise.
+
+2019-11-19  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc: Revise includes.
+	(debug_tree): Remove debug code.
+	(lookup_promise_member): Fix whitespace.
+	(find_coro_traits_template_decl): Adjust comments, fix error
+	message punctuation.
+	(get_coroutine_promise_type): Adjust style.
+	(get_coroutine_handle_type): Likewise.
+	(get_coroutine_self_handle_proxy): Likewise.
+	(get_coroutine_promise_proxy): Likewise.
+	(coro_common_keyword_context_valid_p): Add references to the
+	standards sections.
+	to the comments.
+	(coro_function_valid_p): Fix error message punctuation.
+	(build_co_await): Fix comments, fix case of a variable name.
+	(finish_co_await_expr): Fix comments.
+	(finish_co_yield_expr): Assert correct parser output.
+	(check_co_return_expr): Delete.
+	(finish_co_return_stmt): Remove unused code, correct some comments.
+	(register_await_info): Remove debug code.
+	(get_await_suspend_return_type): Likewise.
+	(captures_temporary):  Likewise.
+	(register_local_var_uses): Likewise.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro-bad-return.C: Update the error message.
+
+2019-11-19  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (coro_maybe_expand_co_return): Ensure that an
+	expression is void type before inserting it.  Update comments
+	to include the standard section refs.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-ret-10.C: New test.
+	* g++.dg/coroutines/torture/co-ret-7.C: Check that the void
+	expression is called exactly once.
+
+2019-11-19  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro.h: Remove references to
+	__builtin_coro_is_suspended.
+
+2019-11-18  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (captures_temporary): Correct condition on the
+	early return from this callback.
+
+2019-11-18  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r278390.
+
+2019-11-17  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-builtins.def: Update comments.
+	* coroutine-passes.cc: Likewise.
+	* internal-fn.c: Likewise.
+
+	gcc/c-family/
+	* c-common.h: Likewise.
+
+	gcc/cp/
+	* coroutines.cc: Likewise.
+	* tree.c: Likewise.
+
+	libstdc++-v3/
+	* include/experimental/coroutine: Likewise.
+
+2019-11-17  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.cc: Delete unused code.
+
+2019-11-16  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* constexpr.c (potential_constant_expression_1): Amend comments.
+	* parser.c (cp_parser_unary_expression): Likewise.
+	(cp_parser_jump_statement): Likewise.
+
+2019-11-16  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-builtins.def: Tidy whitespace.
+	(BUILT_IN_CORO_IS_SUSPENDED): Delete.
+	(BUILT_IN_CORO_NOOP): Delete.
+	* coroutine-passes.cc (lower_coro_builtin): Remove lowering for
+	__builtin_coro_suspended.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro-builtins.C: Remove checks for
+	__builtin_coro_suspended, __builtin_coro_noop.
+	* g++.dg/coroutines/torture/check-suspended.C: Remove.
+	* g++.dg/coroutines/torture/mid-suspend-destruction-0.C: Only
+	test suspended state if __builtin_coro_suspended is available.
+
+	libstdc++-v3/
+	* include/experimental/coroutine: Remove references to
+	__builtin_coro_suspended.
+
+2019-11-16  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/c-family/
+	* c.opt: Remove coroutines-ts alias for the command line
+	flag.  Do not enable coroutines for Objective-C++.
+
+2019-11-16  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc: Lots of whitespace fixes.
+	
+	gcc/
+	* coroutine-passes.cc: Likewise.
+
+2019-11-15  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.c: Rename to...
+	* coroutine-passes.cc: ... this.
+
+2019-11-15  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (coro_promise_type_found_p): New.
+	(get_coroutine_promise_type): New.
+	(get_coroutine_handle_type): New.
+	(get_coroutine_self_handle_proxy): New.
+	(get_coroutine_promise_proxy): New.
+	(lookup_promise_member): Use local hash map state instead of the
+	function decl.
+	(coro_function_valid_p): Likewise.
+	(build_co_await): Likewise.
+	(finish_co_await_expr): Likewise.
+	(finish_co_yield_expr): Likewise.
+	(finish_co_return_stmt): Likewise.
+	(build_actor_fn): Likewise.
+	(build_init_or_final_await): Likewise.
+	(morph_fn_to_coro): Likewise.
+	* cp-tree.h (struct GTY): Remove coroutine state fields.
+	(DECL_COROUTINE_HANDLE_TYPE): Remove.
+	(DECL_COROUTINE_SELF_H_PROXY): Remove.
+	(DECL_COROUTINE_PROMISE_TYPE): Remove.
+	(DECL_COROUTINE_PROMISE_PROXY): Remove.
+	(DECL_COROUTINE_FIRST_KEYWD_LOC): Remove.
+
+2019-11-14  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_actor_fn): Mark as coroutine.
+	(build_destroy_fn): Likewise.
+
+2019-11-13  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro.h: Update to n4835.
+
+	libstdc++-v3/
+	* include/experimental/coroutine: Fill in section names, update
+	section numbers to C++20 CD (n4835).
+
+2019-11-13  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/co-yield-syntax-3.C: Adjust namespace.
+	* g++.dg/coroutines/coro-bad-return.C: Likewise.
+	* g++.dg/coroutines/coro-missing-gro.C: Likewise.
+	* g++.dg/coroutines/coro-missing-promise-yield.C: Likewise.
+	* g++.dg/coroutines/coro-missing-ret-value.C: Likewise.
+	* g++.dg/coroutines/coro-missing-ret-void.C: Likewise.
+	* g++.dg/coroutines/coro-missing-ueh.h: Likewise.
+	* g++.dg/coroutines/torture/check-suspended.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-3.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-4.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-5.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-6.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-7.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-8.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-9.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-void-is-ready.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-void-is-suspend.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-3-tmpl.C: Likewise.
+	* g++.dg/coroutines/torture/exceptions-test-0.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-0.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-1.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-2.C: Likewise.
+	* g++.dg/coroutines/torture/mid-suspend-destruction-0.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-0-triv.C: Adjust namespace, add
+	dg-run.
+	* g++.dg/coroutines/torture/co-await-1-value.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-2-xform.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-4-control-flow.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-5-loop.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-6-ovl.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-7-tmpl.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-8-cascade.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-9-pair.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-0-triv.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-1-multi.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-2-loop.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-strings.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-0.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-1.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-2.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-3.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-4.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-5.C: Likewise.
+	* g++.dg/coroutines/torture/gro_on_alloc_fail_0.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-3.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-4.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-3-rhs-op.C: Adjust namespace, add
+	dg-run, correct check values.
+
+2019-11-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	libstdc++-v3/
+	* include/experimental/coroutine: Adjust to use spaceship operator
+	when it's available.
+
+2019-11-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/c-family/
+	* c-cppbuiltin.c (c_cpp_builtins): Adjust value for
+	__cpp_coroutines.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro-pre-proc.C: Adjust test value.
+
+2019-11-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.c (execute_early_expand_coro_ifns):
+	Fix whitespace.
+
+	gcc/cp/
+	* coroutines.cc (find_coro_traits_template_decl): Fix whitespace.
+	(build_co_await): Likewise.
+	(finish_co_await_expr): Likewise.
+	(co_return_expander): Likewise.
+	(co_await_expander): Likewise.
+	(struct __await_xform_data): Likewise.
+	(transform_await_expr): Likewise.
+	(transform_local_var_uses): Likewise.
+	(build_destroy_fn): Likewise.
+	(captures_temporary): Likewise.
+	(morph_fn_to_coro): Likewise.
+	* cp-tree.def: Likewise.
+	* decl.c (finish_function): Likewise.
+	* parser.c (cp_parser_yield_expression): Likewise.
+
+2019-11-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r278049.
+	* gcc/configure: Regenerate.
+
+2019-11-04  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r277764.
+	* gcc/configure: Regenerate.
+
+2019-10-28  Iain Sandoe  <iain@sandoe.co.uk>
+
+	libstdc++-v3/
+	* include/experimental/coroutine: Include <bits/stl_function.h>
+	instead of <functional>.
+
+2019-10-28  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.c (first_vuser): Delete.
+	(move_edge_and_update_vdef): Delete.
+	(execute_expand_coro_ifns): Delete.
+	(class pass_coroutine_expand_ifns): Delete.
+	(make_pass_coroutine_expand_ifns): Delete.
+	* passes.def: Delete coroutine_expand_ifns pass.
+	* tree-pass.h (make_pass_coroutine_expand_ifns): Delete.
+
+2019-10-28  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r277499.
+
+2019-10-21  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r277221.
+
+2019-10-14  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r276952.
+
+2019-10-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	libstdc++-v3/
+	* include/experimental/coroutine (noop_coroutine_handle): New.
+
+2019-10-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	libstdc++-v3/
+	* include/experimental/coroutine: Fix long lines.
+
+2019-10-08  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/exceptions-test-0.C: New test.
+
+2019-10-07  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r276647.
+
+2019-10-07  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/gro_on_alloc_fail_0.C: Include
+	<new> when available.
+
+2019-10-07  Iain Sandoe  <iain@sandoe.co.uk>
+
+	libstdc++-v3/
+	* include/experimental/coroutine: Include <functional>.
+
+2019-10-04  Iain Sandoe  <iain@sandoe.co.uk>
+
+	libstdc++-v3/
+	* include/experimental/coroutine (operator!=): New.
+	(operator<): New.
+	(operator>): New.
+	(operator<=): New.
+	(operator>=): New.
+
+2019-10-02  Iain Sandoe  <iain@sandoe.co.uk>
+
+	libstdc++-v3/
+	* include/experimental/coroutine (operator==): New.
+	
+2019-10-01  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-yield-strings.C: Update the test
+	to show that a DTOR for coro state is run on scope exit.  Make
+	the test run.
+
+2019-09-30  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r276292.
+	
+2019-09-25  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro.h: Include experimental/coroutine when
+	it is available.
+
+2019-09-25  Iain Sandoe  <iain@sandoe.co.uk>
+
+	libstdc++-v3/
+	* include/Makefile.am (experimental_headers): Add
+	experimental/coroutine.
+	* include/Makefile.in: Regenerated.
+	* include/experimental/coroutine: New file.
+
+2019-09-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r276035.
+
+2019-09-18  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.c (execute_early_expand_coro_ifns):
+	Remove redundant yield logic labels.
+
+2019-09-14  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-yield-strings.C: New test.
+
+2019-09-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r275623.
+
+2019-09-07  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro-missing-ueh-1.C: New test.
+	* g++.dg/coroutines/coro-missing-ueh-2.C: New test.
+	* g++.dg/coroutines/coro-missing-ueh-3.C: New test.
+	* g++.dg/coroutines/coro-missing-ueh.h: New.
+
+2019-09-06  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (captures_temporary): Where the 'this' pointer
+	addresses a temporary object, promote that to a frame variable.
+
+2019-09-06  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (maybe_promote_captured_temps): Check that there
+	are any blocks in the stack before using.
+
+2019-09-06  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r275450.
+
+2019-09-05  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_actor_fn): Move the block link handling to
+	the morph function.
+	(morph_fn_to_coro): Reorganise block re-writing to handle the case
+	for exception wrapper.  Implement exception wrapper onto the users
+	function statements.
+
+2019-09-04  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_actor_fn): Ensure that we stitch in subblocks
+	of the original function top block.
+	(morph_fn_to_coro):  Create a new top block for the ramp, rather than
+	reusing the one from the original function.
+
+2019-09-03  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.c (move_edge_and_update): New.
+	(execute_early_expand_coro_ifns): New.
+	(class pass_coroutine_early_expand_ifns): New.
+	(make_pass_coroutine_early_expand_ifns): New.
+	(pass_coroutine_expand_ifns::gate): Disable.
+	* passes.def: Add coroutine_early_expand_ifns pass.
+	* tree-pass.h (make_pass_coroutine_early_expand_ifns): New declaration.
+
+2019-09-02  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutines.cc (struct __susp_frame_data): Arrange to record
+	temporary vars caputered by reference.
+	(captures_temporary): New callback.
+	(register_awaits): Walk the initialier for captured temporaries.
+	(maybe_promote_captured_temps): New, if we see one or more temps
+	captured by reference promote them to regular vars.
+	(await_statement_walker): Walk bind expressions so that we can
+	record the scope into which new insertions would be made.
+	(morph_fn_to_coro): Initialise additional suspend point vars.  
+	Update comments.
+
+2019-08-27  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro.h (__CORO_H_N4775): Change to...
+	... this __CORO_H_N4830.  Revise hidden namespace.
+	* g++.dg/coroutines/co-yield-syntax-3.C: Use revised namespace.
+	* g++.dg/coroutines/coro-bad-return.C: Likewise.
+	* g++.dg/coroutines/coro-missing-gro.C: Likewise.
+	* g++.dg/coroutines/coro-missing-promise-yield.C: Likewise.
+	* g++.dg/coroutines/coro-missing-ret-value.C: Likewise.
+	* g++.dg/coroutines/coro-missing-ret-void.C: Likewise.
+	* g++.dg/coroutines/torture/check-suspended.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-0-triv.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-1-value.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-2-xform.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-3-rhs-op.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-4-control-flow.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-5-loop.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-6-ovl.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-7-tmpl.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-8-cascade.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-9-pair.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-3.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-4.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-5.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-6.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-7.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-8.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-9.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-void-is-ready.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-void-is-suspend.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-0-triv.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-1-multi.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-2-loop.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-3-tmpl.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-0.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-1.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-2.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-3.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-4.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-5.C: Likewise.
+	* g++.dg/coroutines/torture/gro_on_alloc_fail_0.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-0.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-1.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-2.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-3.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-4.C: Likewise.
+	* g++.dg/coroutines/torture/mid-suspend-destruction-0.C: Likewise.
+	* g++.dg/coroutines/coro-pre-proc.C: Likewise. Check revised pre-
+	proc value.
+
+2019-08-27  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/c-family/
+	* c-cppbuiltin.c (c_cpp_builtins): Update builtin define to date
+	of post-Cologne c++20 working draft.
+
+2019-08-26  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r274922.
+
+2019-08-20  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r274689.
+
+2019-08-19  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_await_expander): Wrap the internal fn
+	call for IFN_CO_SUSPN into a full expression.
+
+2019-08-18  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (struct __susp_frame_data): Add a counter for awaits.
+	(register_awaits): Account the handled await.
+	(await_statement_walker): New, walk statements checking each for
+	awaits.
+	(morph_fn_to_coro): Use await_statement_walker instead of calling
+	register_awaits directly.
+
+2019-08-17  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_await_expander): Remove unused lowering.
+
+2019-08-17  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_await_expander): Delete dead code.
+
+2019-08-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r274275.
+
+2019-08-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.c (execute_expand_coro_ifns): Update call
+	argument description.
+
+2019-08-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.c (lower_coro_builtin): Lower IFN_CO_SUSPN.
+	* internal-fn.c (expand_CO_SUSPN): New.
+	* internal-fn.def (CO_SUSPN): New.
+
+	gcc/cp/ChangeLog:
+	* coroutines.cc (co_await_expander): Encode the scope exiting
+	return as an internal function.
+
+2019-08-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* passes.def: Lower coroutine builtins after the EH/cleanup
+	expansions.
+
+2019-08-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* internal-fn.def (CO_YIELD): Remove argument signature.
+
+2019-08-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (struct __coro_aw_data): Reorder await state
+	vars struct and update comments.
+	(expand_co_awaits): Likewise.
+
+2019-08-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (transform_local_var_uses): Remove dead instances
+	of local variables copied to the frame.
+
+2019-08-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/ChangeLog:
+	* coroutines.cc (transform_local_var_uses): Initialise frame
+	copies of local vars directly.
+
+2019-08-09  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Initialise the coro frame
+	pointer before passing to IFN_CO_FRAME.
+
+2019-08-08  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Discard unused code for
+	explicit GRO destruction.
+
+2019-08-07  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Create the return object
+	in place when possible.
+
+2019-08-07  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_actor_fn): Lookup and use delete operator
+	instead of builtin_free().
+
+2019-08-06  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (transform_local_var_uses): If a local var needs
+	constructing, then do so.
+
+2019-08-06  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (register_awaits): Set the handle for the
+	await_suspend() return to the correct type.
+
+2019-08-05  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r274111.
+
+2019-08-02  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Check for the availability of
+	a move CTOR and use it if present.
+
+2019-08-01  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_co_await): Expect a record type for a
+	await_suspend() returning a handle.
+	(co_await_expander): Deal with the three cases of return type
+	that are allowed for await_suspend().
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-ret-9.C: New test.
+
+2019-08-01  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (get_await_suspend_return_type): Handle TARGET_EXPR
+	as well as CALL_EXPR.
+
+2019-08-01  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (transform_await_expr): Rearrange and cater for the
+	await_suspend() return type.
+
+2019-08-01  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_await_expander): Simplify argument computation
+	for await_suspend().
+
+2019-08-01  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (struct suspend_point_info): Add space for the
+	await_suspend method type.  Rename the handle field.
+	(transform_await_expr): Rename the handle field.
+	(register_await_info): Cache the suspend method return type.
+	(get_await_suspend_return_type): New.
+	(register_awaits): Handle caching the await_suspend return type.
+	(morph_fn_to_coro): Ensure that we have the right suspend types
+	for initial and final suspends.
+
+2019-07-31  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (finish_co_await_expr): Use the expression type as
+	the tree type when processing template decls.
+	(finish_co_yield_expr): Likewise.
+
+2019-07-30  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Check that the promise needs
+	constructing before building one.
+
+2019-07-29  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_await_expander): Comment unused param.
+
+2019-07-29  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r273864.
+
+2019-07-28  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): If we use the allocation failure
+	method, mark it as used.
+
+2019-07-28  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.c (execute_finalize_frame): Copy the first argument
+	for now.
+	* internal-fn.def (CO_FRAME): Mark as pure.
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): If the user has declared a method
+	to handle allocation failure, use a no-throw new and check its return
+	using the provided method if the return is NULL.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/gro_on_alloc_fail_0.C: New test.
+
+2019-07-28  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/coro-torture.exp: Default to c++17.
+
+2019-07-22  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r273656.
+
+2019-07-21  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Remove unused var.
+
+2019-07-21  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.c (lower_coro_builtin): Revert changes to handle
+	three callback pointers.  Reimplement the is_suspended check to be a
+	test for non-null on the destroy() function pointer field.
+
+	gcc/cp/
+	* coroutines.cc (build_actor_fn): Remove support for the "is_suspended"
+	test.
+	(build_suspended_fn): Likewise.
+	(register_local_var_uses): Likewise.
+	(morph_fn_to_coro): Likewise.
+	* cp-tree.h (morph_fn_to_coro): Likewise.
+	* decl.c (finish_function): Likewise.
+
+2019-07-20  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* internal-fn.def (CO_YIELD): Add function signature.
+	(CO_FRAME): Make leaf.
+
+	gcc/cp/=
+	* coroutines.cc (co_await_expander): Add coro frame as a call arg to
+	IFN_CO_YIELD calls.
+
+2019-07-18  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.c (execute_finalize_frame): New.
+	(class pass_coroutine_finalize_frame): New.
+	(make_pass_coroutine_finalize_frame): New.
+	* passes.def (pass_coroutine_finalize_frame): New.
+	* tree-pass.h (make_pass_coroutine_finalize_frame): New.
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Remove the generation of the call
+	to builtin malloc and replace with IFN_CO_FRAME.
+
+2019-07-17  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (get_fn_local_identifier): Use the mangled function
+	name as the base of function-local identifiers, if it's available.
+
+2019-07-16  Iain Sandoe  <iain@sandoe.co.uk>
+
+	* coroutines.cc (get_fn_local_identifier): Use the instantiated type
+	names to unique the function-local identifiers in instantiations.
+	(morph_fn_to_coro): Use get_fn_local_identifier to make the frame
+	identifier.
+
+2019-07-16  Iain Sandoe  <iain@sandoe.co.uk>
+
+	* coroutines.cc (register_param_uses):  Back out forced type completion
+	for referenced parameter types.
+
+2019-07-15  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (register_param_uses): Convert reference types to
+	pointers.
+	(morph_fn_to_coro): Add an explicit type conversion in the case that
+	the passed-by type differs from the actual.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/func-params-5.C: New test.
+
+2019-07-14  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (register_param_uses): Ensure complete types for
+	params.  Save actual frame type.  Tidy up a useless statement.
+	(morph_fn_to_coro):  Used the actual saved frame type to figure
+	determine if construction is needed. 
+
+2019-07-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp
+	* coroutines.cc (co_await_expander): Exit early for statement class.
+
+2019-07-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp
+	* coroutines.cc (co_await_expander): Recurse into co_await sub-trees.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-await-8-cascade.C: New test.
+	* g++.dg/coroutines/torture/co-await-9-pair.C: New test.
+
+2019-07-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_await_expander):Use reordered expression vars.
+	(transform_await_expr): Re-order expression vars.
+
+2019-07-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* tree.c (cp_walk_subtrees): Handle CO_YIELD_EXPR, CO_AWAIT_EXPR and
+	CO_RETRN_EXPR.
+
+2019-07-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc: Fix line wrapping, leading and trailing whitespace.
+
+2019-07-09  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (finish_co_await_expr): Return early with the original
+	expression when we have incomplete promise type.
+	Amend comments related to co_await.
+	* pt.c (tsubst_copy): Handle CO_AWAIT_EXPR.
+	(tsubst_expr): Likewise.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-await-7-tmpl.C: New test.
+
+2019-07-09  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (finish_co_yield_expr): Return early with the original
+	expression when we have incomplete promise type.
+	* pt.c (tsubst_expr): Handle CO_YIELD_EXPR.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-yield-3-tmpl.C: New test.
+
+2019-07-09  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (finish_co_return_stmt): Return early with the original
+	expression when we have incomplete promise type.
+	* pt.c (tsubst_expr): Handle CO_RETRN_EXPR.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-ret-8.C: New test.
+
+2019-07-09  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* cp-tree.def (CO_AWAIT_EXPR): Amend operand descriptions.
+
+2019-07-08  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r272193.
+	gcc/
+	* configure: Regenerated.
+
+	gcc/c-family/
+	* c.opt: Remerge modules flags.
+
+2019-07-06  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro.h: Connect up the suspension checking built-
+	in.
+	* g++.dg/coroutines/torture/check-suspended.C: New test.
+
+2019-07-06  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-builtins.def (BUILT_IN_CORO_IS_SUSPENDED): New.
+	* coroutine-passes.c (lower_coro_builtin): Lower suspension check
+	builtin.
+
+	gcc/cp/
+	* coroutines.cc (build_suspended_fn): New helper function.
+	(morph_fn_to_coro): Add and populate a function pointer field for the
+	suspension-checking routine.
+	* cp-tree.h (morph_fn_to_coro): Alter prototype.
+	* decl.c (finish_function): Generate output for the suspension check
+	helper.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro-builtins.C (main): Test that we handle the
+	new __builtin_coro_is_suspended builtin.
+
+2019-07-06  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_actor_fn): Clear suspended status on entry
+	set it on suspended returns.
+	(build_destroy_fn): Comment change only.
+	(register_local_var_uses): Rename suspension status field.
+	(morph_fn_to_coro):  Likewise.  Reorder code that initialises the
+	field.
+
+2019-07-01  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r272840.
+
+2019-06-30  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (coro_maybe_expand_co_return): New.
+	(co_return_expander): Handle statement lists and insert the expanded
+	co_return statements instead of nesting them.
+	(build_actor_fn): Update comment.
+
+2019-06-29  Iain Sandoe  <iain@sandoe.co.uk>
+ 
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): If the body is empty or an error
+	mark, then we can't determine any more so punt.  If the body is marked
+	noexcept, remember this and pass on to the ramp.  Some small comment
+	changes are included.
+	* decl.c (finish_function): Handle exception blocks from the ramp.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coroutines.exp:
+	* g++.dg/coroutines/torture/coro-torture.exp:
+
+2019-06-29  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-ret-3.C: Remove explicit "inline" from
+	the test declaration.
+	* g++.dg/coroutines/torture/co-ret-5.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-7.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-void-is-ready.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-void-is-suspend.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-0.C: Likewise.
+
+2019-06-29  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/co-yield-syntax-3.C: GNU-ify test function
+	declaration.
+	* g++.dg/coroutines/coro-bad-return.C: Likewise.
+	* g++.dg/coroutines/coro-context-vararg.C: Likewise.
+	* g++.dg/coroutines/coro-missing-gro.C: Likewise.
+	* g++.dg/coroutines/coro-missing-promise-yield.C: Likewise.
+	* g++.dg/coroutines/coro-missing-ret-value.C: Likewise.
+	* g++.dg/coroutines/coro-missing-ret-void.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-0-triv.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-1-value.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-2-xform.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-3-rhs-op.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-4-control-flow.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-5-loop.C: Likewise.
+	* g++.dg/coroutines/torture/co-await-6-ovl.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-3.C: Likewise.:
+	* g++.dg/coroutines/torture/co-ret-4.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-5.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-6.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-7.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-void-is-ready.C: Likewise.
+	* g++.dg/coroutines/torture/co-ret-void-is-suspend.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-0-triv.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-1-multi.C: Likewise.
+	* g++.dg/coroutines/torture/co-yield-2-loop.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-0.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-1.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-2.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-3.C: Likewise.
+	* g++.dg/coroutines/torture/func-params-4.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-0.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-1.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-2.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-3.C: Likewise.
+	* g++.dg/coroutines/torture/local-var-4.C: Likewise.
+
+2019-06-24  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r272613.
+
+2019-06-22  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_actor_fn): Run DTORs for params that had
+	corresponding CTORs.
+	(register_param_uses): Strip references.
+	(morph_fn_to_coro): Where the type of a param requires constucting
+	build a placement new for the frame entry constructed from the
+	param.  Pass the list of constructed entries to the actor build fn.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/func-params-4.C: New test.
+
+2019-06-17  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (register_local_var_uses): Make frame local var ids
+	unique for each bind scope.
+	
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/local-var-4.C: New test.
+
+2019-06-17  Iain Sandoe  <iain@sandoe.co.uk>
+
+	* g++.dg/coroutines/torture/local-var-0.C: New test.
+	* g++.dg/coroutines/torture/local-var-1.C: New test.
+	* g++.dg/coroutines/torture/local-var-2.C: New test.
+	* g++.dg/coroutines/torture/local-var-3.C: New test.
+
+2019-06-17  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r272370.
+
+2019-06-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (struct __local_vars_transform): New.
+	(transform_local_var_uses): Initialise local variable frame
+	copies and then rewrite uses to them.
+	(build_actor_fn): Use transform_local_var_uses to rewrite local
+	variables.
+	(struct __local_vars_frame_data): New.
+	(register_local_var_uses): Make space for local vars in the frame.
+	(register_param_uses): Update comment about the frame.
+	(morph_fn_to_coro): Use register_local_var_uses to record the
+	local var space.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-ret-4.C: Remove 'inline'.
+	* g++.dg/coroutines/torture/local-var-0.C: New test.
+	* g++.dg/coroutines/torture/local-var-1.C: New test.
+	* g++.dg/coroutines/torture/local-var-2.C: New test.
+	* g++.dg/coroutines/torture/local-var-3.C: New test.
+
+2019-06-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Chain the new funtions
+	directly after the ramp.
+
+2019-06-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_actor_fn): Adjust scopes in the re-
+	mapped function.
+	(morph_fn_to_coro): Build new scope for the ramp.
+
+2019-06-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_destroy_fn): Don't generate a BIND_EXPR.
+
+2019-06-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/func-params-3.C: New test.
+
+2019-06-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro):  Return a default-constructed
+	object on morph error.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/co-yield-syntax-3.C (struct DummyYield):
+	* g++.dg/coroutines/coro-missing-gro.C (struct MissingGRO):
+	* g++.dg/coroutines/coro-missing-promise-yield.C (struct MissingPromiseYield):
+	* g++.dg/coroutines/coro-missing-ret-value.C (struct MissingRetValue):
+	* g++.dg/coroutines/coro-missing-ret-void.C (struct MissingRetVoid):
+
+2019-06-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_actor_fn): Add location information to
+	generated trees.
+	(morph_fn_to_coro): Likewise.
+
+2019-06-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coroutines.exp: Append '-fno-exceptions' to
+	the test flags.
+
+2019-06-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (create_anon_label_with_ctx): Moved.
+	(create_named_label_with_ctx): New Helper.
+	(co_await_expander): Use label creation helper.
+	(build_actor_fn): Likewise.
+	(morph_fn_to_coro): Likewise.
+
+2019-06-09  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r272095.
+	
+2019-06-09  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Record every use of each function
+	param, not just the first one.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/func-params-2.C: New test.
+
+2019-06-08  Iain Sandoe  <iain@sandoe.co.uk>
+
+	* coroutines.cc (build_actor_fn): Simplify the conditional call to
+	free the coroutine frame.
+
+2019-06-08  Iain Sandoe  <iain@sandoe.co.uk>
+
+	* coroutines.cc (co_return_expander): Look inside cleanup point
+	expressions, and expand co_returns inside, adding cleanup points
+	to the new sub-expressions where needed.
+
+2019-06-08  Iain Sandoe  <iain@sandoe.co.uk>
+
+	* coroutines.cc (coro_build_expr_stmt): New helper.
+	(coro_build_cvt_void_expr_stmt): New helper.
+	(co_await_expander): Use EXPR_STMT build helpers.
+	(build_actor_fn): Likewise.
+	(build_destroy_fn): Likewise.
+	(morph_fn_to_coro): Likewise.
+
+2019-06-08  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_await_expander): Avoid a maybe used uninitialised
+	warning.
+
+2019-06-08  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (coro_make_frame_entry): New helper.
+	(register_awaits): Use coro_make_frame_entry() to build new frame
+	field entries.
+	(register_param_uses): Likewise.
+	(morph_fn_to_coro): Likewise.
+
+2019-06-02  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_actor_fn): Rewrite uses of params in the
+	original function body with references to the saved frame version.
+	(struct __param_frame_data): New struct.
+	(register_param_uses): New function.
+	(morph_fn_to_coro): Record any params used within the original
+	function body.  Make and initialise space for them in the frame.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/func-params-1.C: New test.
+
+2019-06-02  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Manage the visited sets so
+	that they don't hang around for the entire duration of the func.
+
+2019-06-02  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_actor_fn): Verify trees before and after.
+
+2019-06-02  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* decl.c (emit_coro_helper): Ensure that the folder cache is
+	clear before we fold each routine.
+
+2019-05-29  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r271729.
+
+2019-05-28  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_actor_fn): Wrap call expressions in
+	expression statements where needed.
+	(morph_fn_to_coro): Likewise.
+
+2019-05-28  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* tree.c (build_call_expr_internal_loc_array): Make the argument
+	list match the declaration.
+
+2019-05-20  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Check if the promise has a CTOR
+	that takes the same param list as the function. use that if so else
+	use CTOR with empty param list.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/func-params-0.C: New.
+
+2019-05-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r271107.
+
+	gcc/
+	* configure: Regenerated.
+
+	gcc/cp/
+	* cp-objcp-common.c (cp_common_init_ts): Make coroutine
+	keywords MARK_TS_EXP.
+	* parser.c (cp_parser_jump_statement): Update to use
+	FNDECL_USED_AUTO.
+	* coroutines.cc: Likewise.
+
+2019-04-20  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r270468.
+
+2019-04-01  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r270053.
+
+2019-03-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r269569.
+
+2019-03-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_await_expander): Use a temporary expression for
+	the coroutine handle passed to await_suspend(), rather than a frame
+	entry.
+
+2019-03-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_await_expander): Use TARGET_EXPR in INIT_EXPR.
+	(build_actor_fn): Likewise.
+	(morph_fn_to_coro): Likewise.
+
+2019-03-11  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (struct __coro_ret_data): Remove blank line.
+
+2019-02-22  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* typeck.c: Move check_co_return_expr from here to ...
+	* coroutines.cc: ... Here and make it static.
+	* cp-tree.h (check_co_return_expr): Remove.
+
+2019-02-22  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (expand_co_returns): Remove dead code.
+	(build_actor_fn): Likewise.
+
+2019-02-22  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* cp-tree.h (COROUTINE_RETURN_P): Remove.
+
+2019-02-22  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_return_context_valid_p): Rename to
+	finish_co_return_stmt. (finish_co_return_stmt): Amend to return
+	CO_RETRN_EXPR, use promise proxy.
+	(struct __proxy_replace, replace_proxy): Move earlier in the source.
+	(struct __coro_ret_data): Add promise proxy member.
+	(co_return_expander): Revise to handle CO_RETRN_EXPR.
+	(expand_co_returns): Revise to handle replacement of promise proxy.
+	* cp-tree.h (co_return_context_valid_p): Remove.
+	* parser.c (cp_parser_jump_statement): Revise to use
+	finish_co_return_stmt only.
+	* semantics.c (finish_co_return_stmt): Remove.
+
+2019-02-14  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_co_await): Free args vec after use.
+	(build_actor_fn): Likewise.
+	(morph_fn_to_coro): Likewise.
+
+2019-02-14  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_co_await): We build the awaiter calls to
+	verify, so save them for expansion time.
+	(co_await_expander): Use saved awaiter calls instead of rebuilding
+	them.
+	(transform_await_expr): Substitute the proxy for self handle into
+	any of the calls that use it.
+
+2019-02-14  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (__coro_aw_data): Add "self" handle field.
+	(co_await_expander): Collect the calls build at parse time instead
+	of building them again.  Use the saved handle for "self".
+	(__await_xform_data): Add fields for the self handle.
+	(build_actor_fn): Transform the proxy for the "self" handle.
+
+2019-02-14  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_actor_fn): initialize the "self" handle
+	slot.
+
+2019-02-14  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Allocate a slot for "self"
+	handle in the coro frame.
+
+2019-02-14  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (coro_promise_type_found_p): Ensure that the
+	coro handle type is complete.
+
+2019-02-14  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (coro_promise_type_found_p): Build a proxy for
+	the handle to coroutine 'self'.
+	* cp-tree.h (lang_decl_fn): Add self_h_proxy, amend comments.
+	(DECL_COROUTINE_SELF_H_PROXY): New.
+
+2019-02-13  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r268852.
+	gcc/
+	* configure: Regenerated.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-await-0-triv.C: New.
+	* g++.dg/coroutines/torture/co-await-1-value.C: New.
+	* g++.dg/coroutines/torture/co-await-2-xform.C: New.
+	* g++.dg/coroutines/torture/co-await-3-rhs-op.C: New.
+	* g++.dg/coroutines/torture/co-await-4-control-flow.C: New.
+	* g++.dg/coroutines/torture/co-await-5-loop.C: New.
+	* g++.dg/coroutines/torture/co-await-6-ovl.C: New.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-yield-0-triv.C: New.
+	* g++.dg/coroutines/torture/co-yield-1-multi.C: New.
+	* g++.dg/coroutines/torture/co-yield-2-loop.C: New.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.c (execute_expand_coro_ifns): Rewrite the tail of
+	.CO_YIELD IFN blocks.  This is needed to avoid confusing the loop
+	verifier at O0 when we suddenly disconnect stuff inside loops.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.c (execute_expand_coro_ifns): Just update comments
+	and diagnostic strings. NFC.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.c (move_edge_and_update_vdef): Don't recompute
+	dominators immediately, defer until the common code at the end.  Note
+	this wasn't "wrong" it was just a waste of resources.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_co_await): implement co_await() operator
+	overload resolution.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_await_find_in_subtree): Fix unused parm.
+	(register_awaits): Likewise.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_await_expander): Adjust the expander to look
+	inside cleanup point exprs.  The rewritten control flow needs to be
+	introduced at this level.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_await_expander): Use the rewritten co_resume()
+	call as a proof of principle.  Eventually, we will use the three
+	calls built at parser time.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_co_await): Check the awaitable method
+	signatures more rigorously.  Build the method calls for ready and
+	suspend - but don't record them (yet).
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_await_find_in_subtree): New.
+	(co_await_expander): Initial implementation of co_await, limited to
+	expressions without temporaries.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (replace_proxy, transform_await_expr,
+	transform_await_wrapper): New.
+	(build_actor_fn): Rewrite the proxy vars used at parse time to the
+	actual frame vars now we know them.  Drop the synthesis of the initial
+	and final suspend points and use the ones generated at morph time.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_actor_fn): Use the new measured suspend point
+	count to build the resume and destroy dispatchers.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (register_await_info, register_awaits): New.
+	(morph_fn_to_coro): Record suspend points from the function body.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_init_or_final_await): New.
+	(morph_fn_to_coro): Use the co_await builder for initial and final
+	suspend.  Rename the tree list variable used to build the known
+	coroutine frame entries.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc: Collect parse-related functions together, adjust
+	comments.  NFC.
+	* cp-tree.def: Adjust comments. NFC.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* constexpr.c (potential_constant_expression_1): Declare that co_await
+	and co_yield expressions are not candidates for constexpr.
+	* coroutines.cc: Reorganise text to put the parser-related functions
+	together.  Rename co_await_context_valid_p to finish_co_await_expr.
+	(finish_co_await_expr): Perform the check for p.await_transform().
+	Use the common build_co_await() to complete the build.
+	* cp-tree.h: Rename co_await_context_valid_p to finish_co_await_expr.
+	* parser.c (cp_parser_unary_expression): Use finish_co_await_expr in
+	place of the temporary parse.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc: Rename co_yield_context_valid_p to
+	finish_co_yield_expr. (finish_co_yield_expr): Validate and build
+	yield_value() call, use build_co_await() to construct the co_await.
+	* cp-tree.h: Rename co_yield_context_valid_p to finish_co_yield_expr.
+	* parser.c (cp_parser_yield_expression): Revise to use
+	finish_co_yield_expr.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_co_await): New.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* call.c (add_builtin_candidates): Rename COAWAIT_EXPR to
+	CO_AWAIT_EXPR. (op_error, build_new_op_1): Likewise.
+	* coroutines.cc (co_await_expander, build_actor_fn) Likewise.
+	* cp-objcp-common.c (cp_common_init_ts): Rename COAWAIT_EXPR and
+	COYIELD_EXPR, add CO_RETRN_EXPR.
+	* cp-tree.def: Likewise.
+	* operators.def: Rename COAWAIT_EXPR.
+	* parser.c (cp_parser_unary_expression): Likewise.
+	(cp_parser_operator): Ensure CO_AWAIT_EXPR is recognised as a built-
+	in operator.
+	(cp_parser_yield_expression): Rename COYIELD_EXPR to CO_YIELD_EXPR.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (coro_promise_type_found_p): Stash the location
+	of the first coroutine keyword seen.
+	* cp-tree.h (lang_decl_fn): Add first_coro_kw.
+	(DECL_COROUTINE_FIRST_KEYWD_LOC): New.
+	
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (coro_promise_type_found_p): Build a promise var
+	to be used as a proxy for the eventual frame var.
+	* cp-tree.h (lang_decl_fn): Add promise_proxy.
+	(DECL_COROUTINE_PROMISE_PROXY): New.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (find_promise_type): Ensure that the promise
+	type is complete.
+
+2019-02-12  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (find_std_experimental): New.
+	(find_handle_type): Rename to find_coro_traits_template_decl.
+	(find_coro_handle_type): Rename vars, use factored function.
+
+2019-02-03  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* parser.c (required_token): Add RT_CO_YIELD.
+	(cp_parser_yield_expression): New.
+	(cp_parser_assignment_expression): Handle co_yield.
+	(cp_parser_required_error): Handle RT_CO_YIELD.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/co-yield-syntax-1.C: New.
+	* g++.dg/coroutines/co-yield-syntax-2.C: New.
+	* g++.dg/coroutines/co-yield-syntax-3.C: New.
+	* g++.dg/coroutines/coro-missing-promise-yield.C: New.	
+	
+2019-02-03  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* cp-objcp-common.c (cp_common_init_ts): Repurpose unused
+	CORO_ALLOCATOR to COYIELD_EXPR.
+	* cp-tree.def: Likewise.
+
+2019-02-03  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_yield_context_valid_p): New.
+	* cp-tree.h (co_yield_context_valid_p): Declare.
+
+2019-02-03  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): make sure that we can
+	really get a method that produces the return object.
+	* decl.c (finish_function): Update error exit for the case
+	where we fail to morph the coroutine.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro-missing-gro.C: New.
+
+2019-02-03  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc: Whitespace and comment and punctuation
+	changes. NFC.
+
+2019-02-03  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Adjust the lookup for the
+	initial and final suspend point functions to force instantiation
+	of the promise.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-ret-6.C: Update test now that the
+	templatized version handles 'auto' return values for promise
+	members.
+
+2019-02-03  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (get_fn_local_identifier): New helper.
+	(morph_fn_to_coro): User helper to find names for outlined
+	functions.
+
+2019-01-25  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/coro-bad-return.C: New.
+	* g++.dg/coroutines/torture/coro-missing-ret-value.C: New.
+
+2019-01-25  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-ret-6.C: New.
+	* g++.dg/coroutines/torture/co-ret-7.C: New.
+
+2019-01-25  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-ret-5.C: New.
+
+2019-01-25  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro.h (promise): Use the __fr_ptr member.
+	
+2019-01-25  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Handle GRO with a
+	signature different from the function return.  Handle GRO with
+	non-trivial dtor.
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/co-ret-3.C: New.
+	* g++.dg/coroutines/torture/co-ret-4.C: New.
+
+2019-01-25  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Correct a couple of statement
+	void casts.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/torture/coro-torture.exp: New.
+	* g++.dg/coroutines/torture/co-ret-void-is-suspend.C: New.
+	* g++.dg/coroutines/torture/co-ret-void-is-ready.C: New.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro.h: Update this to move closer to the
+	actual experimental/coroutines header we will need.
+	At present, enough support for initial co_return cases.  Rename
+	the __handle field to __fr_ptr, since that's more specific.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/c-family/
+	* c.opt (flag_coroutines): Have this recognised by LTO too.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* passes.def: Move coroutine IFN expansion to post LTO.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.c: Update header use.
+	(first_vuser, move_edge_and_update_vdef): New helper functions.
+	(execute_expand_coro_ifns): Try to minimise early scan for CO_XXX
+	functions, since this has to be executed for all fns.
+	Move dummy edges for the dispatcher to their real targets for any
+	YIELD points that remain.  Elide others. Arrange to update DOM and
+	VSSA.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	*internal-fn.def (CO_ACTOR, CO_YIELD): Make LEAF.
+	Reorder defs to keep NOP at the end.
+	* internal-fn.c (expand_CO_FRAME, expand_CO_YIELD,
+	expand_CO_ACTOR): Don't ICE if they are not expanded, but print an
+	error for now.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* decl.c (emit_coro_helper): New.
+	(finish_function): Emit the actor (resume) and destroy functions.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (build_destroy_fn): New.
+	(morph_fn_to_coro): Use destroy function builder.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (USE_SWITCH_CO_YIELD_GUARD): New.
+	(create_anon_label_with_ctx): New.
+	(co_await_expander): Add alternate codepath generation selected
+	with the USE_SWITCH_CO_YIELD_GUARD.  Push the code labels into the
+	context of the generated actor function.
+	(expand_co_awaits): Provide the actor function decl to the expand
+	callback.  (build_actor_fn): New.
+	(morph_fn_to_coro): Move the expansion of await trees from here
+	to the new actor function and build that in a deferred access
+	check state so that it doesn't show as nested to the gimpifier.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Move the Get Return Object
+	to its own bind level.  Note a code path that is generated by
+	clang but appears dead.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Adjust the ramp function
+	bind to remove the GRO and to rename.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Add a "suspended" field
+	to the coro frame and initialise it.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Add a "frame needs free"
+	field to the coro frame and set it true once malloc has set it. In
+	this case of course, it's always true - but at some later time the
+	elision of the frame allocation will make it meaningful.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Use malloc in the ramp
+	to generate the coro frame for now.  Make the ramp function check
+	for NULL return and bail early if so.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_await_expander): Make the resume index
+	unsigned short.  (expand_co_awaits, morph_fn_to_coro): Likewise.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Adjust function interface
+	to allow return of generated function bodies.  Declare resumer and
+	destroyer functions.
+	* cp-tree.h (morph_fn_to_coro): Adjust interface.
+	* decl.c (finish_function): Allow for the morph routine to return
+	function decls for the resume and destroy functions.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* decl.c (finish_function): Break out condition for doing
+	coroutine expansion.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/c-family/
+	* c-common.h (D_CXX_CHAR8_T_FLAGS): Clean up stray character
+	committed in error.
+
+2019-01-23  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r268188.
+	gcc/
+	* configure: Regenerated.
+	gcc/c-family/
+	* c-common.h (D_CXX_COROUTINES): Adjust for new entry.
+
+2019-01-07  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.c (lower_coro_builtin,
+	execute_lower_coro_builtins, pass_data_coroutine_lower_builtins,
+	gate, execute): New.
+	* passes.def: Add pass_coroutine_lower_builtins.
+	* tree-pass.h (make_pass_coroutine_lower_builtins): New.
+
+2019-01-07  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-passes.c (execute_expand_coro_ifns): New.
+	(pass_coroutine_expand_ifns): Update comments. (execute): Call the
+	dummy implementation.
+
+2019-01-07  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-builtins.def (BUILT_IN_CORO_PROMISE,
+	BUILT_IN_CORO_DONE, BUILT_IN_CORO_NOOP): Mark nothrow.
+	* gcc/internal-fn.c (CO_FRAME, CO_YIELD, CO_ACTOR): Likewise.
+
+2019-01-07  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Adjust wrapping of the
+	GRO initialiser. 
+
+2019-01-07  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* decl.c (finish_function): Don't try to process exceptions
+	yet.
+
+2019-01-07  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* coroutine-builtins.def: Update copyright years.
+	* coroutine-passes.c: Likewise.
+	gcc/cp/
+	* coroutines.cc: Update copyright years.
+	gcc/testsuite/
+	* g++.dg/coroutines/coroutines.exp: Update copyright years.
+
+2019-01-07  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r267619.
+
+2018-12-24  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r267412.
+
+2018-12-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r266943.
+	gcc/
+	* configure: Regenerated.
+
+2018-12-03  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r266733.
+
+2018-11-26  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Call the internal
+	CO_FRAME function directly, rather than deferring to
+	gimplification.
+
+2018-11-26  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_await_expander): New callback.
+	(expand_co_awaits): New.  (morph_fn_to_coro): Rename phase_name
+	to resume_idx_name, and likewise phase to resume_idx. Add
+	initial suspend and final suspend handles to the coroutine
+	frame.  Remove the inline building of initial and final susp
+	point vars.  Add a reference to the relevant awaiter to each
+	co_await tree.  Remove unused init and final awaiter destructors.
+	Expand co_await trees.
+
+2018-11-26  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_return_context_valid_p): It is a valid void
+	co_return if the expression is either absent or void type.
+
+2018-11-26  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_return_expander): New callback.
+	(expand_co_returns): New. (morph_fn_to_coro): Lookup the
+	promise return_void() method.  Expand co_returns. Implement
+	rule for flowing off the end of a coroutine.
+
+2018-11-26  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (find_coro_handle_type): new.
+	(find_handle_type): Remove unused vars.
+	(coro_promise_type_found_p): Save the coro handle rather than
+	the traits one.  (find_promise_type): Remove unused arg.
+
+2018-11-26  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Update initial validity checks
+	and diagnostics.  Amend comments.
+
+2018-11-26  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r266446.
+
+2018-11-20  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Implement initial function
+	rewriting.
+
+2018-11-20  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (find_handle_type): New.
+	(find_promise_type): Refactor. (lookup_promise_member): New.
+	* cp-tree.h (lang_decl_fn): Save handle type.
+
+2018-11-20  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* parser.c (cp_parser_jump_statement): Check for co_return
+	before auto return pattern to get diagnostics for invalid use of
+	'auto'.
+
+2018-11-20  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* cp-tree.def (CORO_ALLOCATOR): New tree.
+	* cp-objcp-common.c (cp_common_init_ts): Mark CORO_ALLOCATOR
+	as typed.
+
+2018-11-19  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro.h: Migrate to use the builtin functions
+	declared to implement the core library functions.
+
+2018-11-19  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/c-family/
+	* c-cppbuiltin.c (c_cpp_builtins): Update coroutines
+	version to 201806.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro-missing-ret-void.C: Update to cater for
+	n4775 changes to coro.h.  Move bad promise example to this file
+	from coro.h.
+	* g++.dg/coroutines/coro-pre-proc.C: Amend to version
+	to 201806.
+	* g++.dg/coroutines/coro.h: Update to n4775. Remove examples of
+	coroutine and promise classes.
+
+2018-11-19  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r266264.
+
+2018-11-03  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r265766.
+
+2018-11-02  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (morph_fn_to_coro): Remove unused variable.
+	(co_await_context_valid_p): Check that the co_await expression is
+	non-NULL.
+
+2018-11-02  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (coro_function_valid_p): New.
+	(morph_fn_to_coro): New.
+	* cp-tree.h (morph_fn_to_coro): New.
+	* decl.c (finish_function): When we have a coroutine, call out to
+	morph the user's original function to add the ramp function base.
+
+2018-11-02  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* call.c (op_error): Handle COAWAIT_EXPR. (build_new_op_1): Likewise.
+	* coroutines.cc (co_await_context_valid_p): New.
+	* cp-tree.h (co_await_context_valid_p): New.
+	* parser.c (cp_parser_unary_expression): Handle RID_CO_AWAIT.
+	gcc/testsuite/
+	* g++.dg/coroutines/coro-await-context-auto-fn.C: New.
+
+2018-11-02  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (co_return_context_valid_p): Factor code to provide
+	common functionality.  (coro_promise_type_found_p): New.
+	(coro_common_keyword_context_valid_p): New.
+
+2018-11-02  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* cp-objcp-common.c (cp_common_init_ts): Add COAWAIT_EXPR to typed
+	trees.
+	* cp-tree.def (COAWAIT_EXPR): New tree code.
+	* operators.def (co_await): New unary operator.
+
+2018-11-02  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro.h (coroutine_traits): Move typename into the
+	implementation space.
+
+2018-11-02  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* cp-tree.h (DECL_COROUTINE_FUNCTION_P): Rename to DECL_COROUTINE_P.
+	(co_return_context_valid_p): Move declaration to new section for
+	coroutines.cc.
+	* semantics.c (finish_co_return_stmt): Rename DECL_COROUTINE_FUNCTION_P.
+
+2018-10-29  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r265582.
+
+2018-10-15  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r265156.
+
+2018-10-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* coroutines.cc (find_promise_type): New.
+	(co_return_context_valid_p): Diagnose missing promise members.
+	* cp-tree.h (lang_decl_fn): Add promise_type.
+	(DECL_COROUTINE_PROMISE_TYPE): New.
+
+	gcc/testsuite/
+	* g++.dg/coroutines/coro.h (MissingRetVoid): New class.
+	* g++.dg/coroutines/coro-missing-ret-void.C: New.
+
+2018-10-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* Make-lang.in (CXX_AND_OBJCXX_OBJS): Add cp/coroutines.o.
+	* semantics.c: Move co_return_context_valid_p to new file.
+	* coroutines.cc: New.
+
+2018-10-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* cp-tree.h: Use a bit in lang_decl_fn instead of DECL_LANG_FLAG_3
+	to signal that a function is a coroutine.
+ 
+2018-10-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* Makefile.in (OBJS): Add coroutine-passes.o.
+	* tree-pass.h (make_pass_coroutine_expand_ifns): New.
+	* passes.def: Add pass_coroutine_expand_ifns to lowering passes.
+	* coroutine-passes.c: New.
+
+2018-10-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* internal-fn.def (CO_FRAME, CO_YIELD, CO_ACTOR): New.
+	* internal-fn.c (expand_CO_FRAME, expand_CO_YIELD,
+	expand_CO_ACTOR): New.
+
+2018-10-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* builtin-types.def (BT_FN_BOOL_PTR, BT_FN_PTR_PTR_SIZE_BOOL): New.
+	* builtins.def (DEF_COROUTINE_BUILTIN): New.
+	Include coroutine-builtins.def.
+	* coroutine-builtins.def: New.
+	gcc/testsuite/
+	* coro-builtins.C: New.
+
+2018-10-10  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* coroutines/coroutines.exp: Update to add attribution.
+
+2018-10-09  Nathan Sidwell  <nathan@acm.org>
+
+	gcc/c-family/
+	* c.opt: Add some modules options.
+	gcc/cp/
+	* lang-specs.h: Provide diagnostic when modules options are used.
+
+2018-10-09  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r264949.
+
+2018-10-01  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/cp/
+	* cp-tree.h (COROUTINE_RETURN_P, DECL_COROUTINE_FUNCTION_P): New.
+	* typecheck.c (check_co_return_expr): New.
+	* semantics.c (co_return_context_valid_p, finish_co_return_stmt) New.
+	* parser.c (cp_parser_statement): handle RID_CO_RETURN.
+	(cp_parser_jump_statement): handle RID_CO_RETURN.
+	gcc/testsuite/
+	* g++.dg/coroutines/coro.h: New.
+	* g++.dg/coroutines/coro-auto-fn.C: New.
+	* g++.dg/coroutines/coro-constexpr-fn.C: New.
+	* g++.dg/coroutines/coro-context-ctor-dtor.C: New.
+	* g++.dg/coroutines/coro-context-main.C: New.
+	* g++.dg/coroutines/coro-context-vararg.C: New.
+
+2018-10-01  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/c-family/
+	* c-common.h (RID_CO_AWAIT, RID_CO_YIELD, RID_CO_RETURN,
+	D_CXX_COROUTINES, D_CXX_COROUTINES_FLAGS): New.
+	* c-common.c (c_common_reswords): co_await, co_yield,
+	co_return New keywords.
+	gcc/cp/
+	* lex.c (init_reswords): Handle flag_coroutines.
+
+2018-10-01  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/testsuite/
+	* coroutines/coroutines.exp: New.
+	* coroutines/coro-pre-proc.C: New.
+
+2018-10-01  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/c-family/
+	* c.opt (fcoroutines, fcoroutines-ts): New.
+	* c-cppbuiltin.c (c_cpp_builtins): Add __cpp_coroutines.
+	gcc/
+	* doc/invoke.texi (fcoroutines): New description.
+
+2018-10-01  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Merge trunk r264732.
+
+2018-09-22  Iain Sandoe  <iain@sandoe.co.uk>
+
+	gcc/
+	* configure.ac (ACX_BUGURL): Point to the project wiki page.
+	* configure: Regenerated.
+
+2018-09-21  Iain Sandoe  <iain@sandoe.co.uk>
+
+	Branch creation from trunk:264468
+	Use this Changelog for all branch changes, including merges.
+
+	gcc/REVISION: New (branch identifier).
+
+Local Variables:
+mode: change-log
+change-log-default-name: "ChangeLog.coroutines"
+End:

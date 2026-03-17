@@ -1086,7 +1086,9 @@ AC_ARG_WITH(specs,
 AC_SUBST(CONFIGURE_SPECS)
 
 ACX_PKGVERSION([GCC])
-ACX_BUGURL([https://gcc.gnu.org/bugs/])
+# ACX_BUGURL([https://gcc.gnu.org/bugs/])
+# '\#' needed to escape hash to Make
+ACX_BUGURL([https://gcc.gnu.org/wiki/cxx-coroutines\#Bugs])
 
 # Allow overriding the default URL for documentation
 AC_ARG_WITH(documentation-root-url,
